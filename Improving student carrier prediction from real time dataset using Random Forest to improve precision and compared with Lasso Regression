@@ -1,0 +1,42 @@
+LASSO REGRESSION:
+# Import necessary libraries
+import pandas as pd
+from sklearn.model_selection import train_test_split
+from sklearn.linear_model import LogisticRegression
+from sklearn.preprocessing import StandardScaler
+from sklearn.metrics import accuracy_score, confusion_matrix, classification_report
+
+# Load the data from the CSV file
+data = pd.read_csv('/content/drive/MyDrive/roo_data.csv')
+
+# Assume the 'features' are the columns you want to use for prediction
+# and 'target' is the column you want to predict (0 or 1)
+features = data[['Logical quotient rating', 'hackathons', 'coding skills rating']] # Replace with your actual feature columns
+target = data['Logical quotient rating']  # Replace with your actual target column
+
+# Split the data into training and testing sets
+X_train, X_test, y_train, y_test = train_test_split(features, target, test_size=0.2, random_state=42)
+
+# Standardize the features
+scaler = StandardScaler()
+X_train_scaled = scaler.fit_transform(X_train)
+X_test_scaled = scaler.transform(X_test)
+
+# Initialize the logistic regression model with L1 regularization
+alpha = 0.01  # Regularization strength, you can experiment with different values
+logreg_model = LogisticRegression(penalty='l1', C=1/alpha, solver='liblinear')
+
+# Train the model
+logreg_model.fit(X_train_scaled, y_train)
+
+# Make predictions on the test set
+predictions = logreg_model.predict(X_test_scaled)
+
+# Evaluate the model
+accuracy = accuracy_score(y_test, predictions)
+conf_matrix = confusion_matrix(y_test, predictions)
+class_report = classification_report(y_test, predictions)
+
+print(f'Accuracy: {accuracy}')
+print(f'Confusion Matrix:\n{conf_matrix}')
+print(f'Classification Report:\n{class_report}')
