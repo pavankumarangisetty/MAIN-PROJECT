@@ -1,0 +1,27 @@
+Enhancing the analysis of student carrier prediction using Resnet-50 classifier in comparison with SVM classifier
+
+P: poor prediction
+I: Resnet-50
+C: SVM
+O: improved accuracy
+
+Improving student carrier prediction from relatime dataset using Resnet-50 to improve precision and compared with ANN classifier
+
+P: lack of precision
+I: Resnet-50
+C: ANN classifier
+O: improved precision
+
+Maximizing the accuracy of student carrier prediction using Resnet-50 in comparison with lasso regression
+
+P: poor accuracy
+I: resnet-50
+C: lasso regression
+O: higher accuracy gain
+
+Prediction and finding of student carrier using  Resnet-50 in comparison with SGD classifier
+
+P: lack of accuracy
+I: resnet-50
+C: SGD classifier
+O: maximizing accuracy
